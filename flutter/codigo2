@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
+          title: const Center(
+            child: Text("nome do App"),
+          ),
+        ),
+      
+        body: const PaginaInicial(), 
+      ),
+    ),
+  );
+}
+
+class PaginaInicial extends StatefulWidget {
+  const PaginaInicial({super.key});
+
+  @override
+  State<PaginaInicial> createState() => PaginaInicialState();
+}
+
+class PaginaInicialState extends State<PaginaInicial> {
+ 
+  int contador = 0;
+  String texto = "Olá, Mundo! 23/06/26";
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column( 
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(texto),
+          ElevatedButton(
+            child: const Text('mudar texto'),
+            onPressed: () {
+              setState(() {
+                contador++;
+                texto = "o texto foi alterado $contador vezes";
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
